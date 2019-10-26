@@ -22,3 +22,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/search', 'SearchController@index')->name('home');
+
+
+Route::group(['prefix' => '/SocialLite'], function () {
+    Route::resource('message','SocialLite\MessageController')->except('create');
+    Route::get('message/create/{listing}','SocialLite\MessageController@create')->name('message.create');
+});

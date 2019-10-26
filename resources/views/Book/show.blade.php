@@ -12,15 +12,17 @@
             @endforeach
             <div class=text-md-left book-text>
                 {{$book->description}}
+
             </div>
 
             @if(isset($listings))
             @foreach ($listings as $listing)
             <div class="listing-book">
                     @include('Listing.index',['Listings'=> $listing->id])
+
             </div>
             @endforeach
-
+        
             @endif
 
 
