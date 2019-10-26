@@ -23,6 +23,6 @@ class DatabaseSeeder extends Seeder
         factory(\App\AuthorBook::class,100)->create();
         factory(\App\Model\Listings::class,100)->create();
         factory(\App\Model\HelpModel\BookGenreKey::class,300)->create();
-
+        factory(\App\Model\SocialLite\Message::class,40)->create();
     }
 }

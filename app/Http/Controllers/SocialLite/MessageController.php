@@ -29,7 +29,7 @@ class MessageController extends Controller
     public function create(Listings $listing)
     {
 
-        return view('SocialLite\Message\create',compact('listing'));
+        return view('SocialLite\Message\create', compact('listing'));
     }
 
     /**
@@ -40,9 +40,10 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        $message=Message::create([
-            'send_user_id'=>$request['send_user_id'],'user_id'=>Auth::id(),'message'=>$request['message-send']]);
-            return redirect()->route('MainPage')->with('success', 'Собщение отправлено спасибо за внимание');
+        $message = Message::create([
+            'send_user_id' => $request['send_user_id'], 'user_id' => Auth::id(), 'message' => $request['message-send']
+        ]);
+        return redirect()->route('MainPage')->with('success', 'Собщение отправлено спасибо за внимание');
     }
 
     /**
@@ -51,9 +52,10 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $message=Auth::user()->message;
+        dd($message);
     }
 
     /**
