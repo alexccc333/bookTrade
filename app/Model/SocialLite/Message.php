@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    public $table='messages';
    protected $guarded =[];
 
-   public function user()
-   {
-       return $this->hasOne(User::class);
-   }
+    public function user(){
+        return $this->belongsToMany(Message::class,'message_user','message_id','id');
+    }
 }

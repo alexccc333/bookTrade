@@ -8,8 +8,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Message::class, function (Faker $faker) {
     return [
-        'send_user_id'=>rand(1,5),
         'user_id'=>rand(1,5),
+        'send_user_id'=>rand(1,5),
         'message'=>$faker->text(100)
     ];
 });

@@ -30,7 +30,7 @@
                         <div class="carousel-item row no-gutters active">
                             @foreach($books as $book)
                                 <div class="col-2 float-left"><a href="{{route('book.show',['book'=>$book->id])}}"><img
-                                                class="img-fluid" src="{{ asset('storage/'.$book->image) }}"></a>
+                                                class="img-fluid" src="{{ asset('storage/image/book/'.$book->image) }}"></a>
                                 </div>
                             @endforeach
                         </div>
