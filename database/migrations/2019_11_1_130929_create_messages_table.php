@@ -18,6 +18,9 @@ class CreateMessagesTable extends Migration
             $table->bigInteger('send_user_id'); //Кому присылается
             $table->bigInteger('user_id'); //кто отсылает
             $table->text('message'); //собщение
+
+//            $table->foreign('send_user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
