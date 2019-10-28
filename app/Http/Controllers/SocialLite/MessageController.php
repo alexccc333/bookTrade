@@ -55,15 +55,15 @@ class MessageController extends Controller
      */
     public function show()
     {
-        $messages = Message::where('user_id', '=', Auth::id())->get();
-        $messageSent = Message::where('send_user_id', '=', Auth::id())->get();
+        $messages = Message::with('message_user_up')->where('user_id', '=', Auth::id())->get();
+        $messageSent = Message::with('send_user')->where('send_user_id', '=', Auth::id())->get();
 
         foreach ($messages as $message) {
             $message['get'] = true;
             $messageOne[$message['send_user_id']][] = $message;
         }
         foreach ($messageSent as $message) {
-            $messageSentOne[$message['user_id']][] = [$message];
+            $messageSentOne[$message['user_id']][] = $message;
         }
 
 
@@ -78,8 +78,10 @@ class MessageController extends Controller
                 $frontendMessage[$key][] = $value;
             }
         }
-        dd($frontendMessage);
-        return view('SocialLite.Message.show', compact('frontendMessage'));
+
+        $users=Auth::user();
+        // dd($frontendMessage);
+        return view('SocialLite.Message.show', compact('frontendMessage','users'));
     }
 
     /**
